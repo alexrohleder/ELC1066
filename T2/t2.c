@@ -29,14 +29,6 @@ void imprime(Lista* l){
 Lista* concatena(Lista* l1, Lista* l2) {
 	Lista* r = l1;
 
-	while (r != NULL) {
-		r = r->p;
-	}
-
-printf("-------b1\n");
-	printf("%lu %lu", sizeof(Lista), sizeof(l2));
-	r->p = l2;
-printf("-------b2\n");
 
 	return r;
 }
@@ -58,7 +50,7 @@ Lista* inverte(Lista* l) {
 int minimo(Lista* l) {
 	int proximo, atual = l->v;
 
-	if (l == NULL) {
+	if (l->p == NULL) {
 		return atual;
 	}
 
@@ -78,7 +70,7 @@ void meio(Lista* l) {
 		p = p->p;
 	}
 
-	printf("O elemento do meio é %d.\n", p->v);
+	printf("O elemento do meio ou mais próximo dele é %d.\n", p->v);
 }
 
 void main() {
@@ -88,7 +80,6 @@ void main() {
     	l1 = insere(l1, 45); /* insere na lista o elemento 45 */
     	l1 = insere(l1, 56); /* insere na lista o elemento 56 */
     	l1 = insere(l1, 78); /* insere na lista o elemento 78 */
-printf("a\n");
 	
 	Lista* l2;
 	l2 = inicializa();
@@ -96,13 +87,17 @@ printf("a\n");
 	l2 = insere(l2, 3);
 	l2 = insere(l2, 2);
 	l2 = insere(l2, 1);
-printf("b\n");
+
+	meio(l1);
+	printf("O menor valor de é: %d\n", minimo(l1));
+
+	printf("Invertendo a lista:\n");
+	imprime(inverte(l1));
+
+	printf("Lista Concatenada:\n");
 	Lista* l3;
 	l3 = concatena(l1, l2);
-	printf("c\n");
-	printf("Lista Concatenada:\n");
 	imprime(l3);
-	printf("\n\n");
 }
 
 
