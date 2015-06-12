@@ -170,10 +170,10 @@ arv_t *arv_search(arv_t *arv, int v)
 		return NULL;
 	}
 
-	if (e < arv->value) {
+	if (v < arv->value) {
 		return arv_search(arv->left, v);
 	} else {
-		if (e > arv->value) {
+		if (v > arv->value) {
 			return arv_search(arv->right, v);
 		}
 	}
@@ -206,7 +206,7 @@ arv_t *arv_search_max(arv_t *arv)
 void arv_print_pre(arv_t *arv)
 {
 	if (arv != NULL) {
-		printf("%d ", arv->value)
+		printf("%d ", arv->value);
 		arv_print_pre(arv->left);
 		arv_print_pre(arv->right);
 	}
@@ -216,7 +216,7 @@ void arv_print_in(arv_t *arv)
 {
 	if (arv != NULL) {
 		arv_print_in(arv->left);
-		printf("%d ", arv->value)
+		printf("%d ", arv->value);
 		arv_print_in(arv->right);
 	}
 }
@@ -226,6 +226,6 @@ void arv_print_pos(arv_t *arv)
 	if (arv != NULL) {
 		arv_print_pos(arv->left);
 		arv_print_pos(arv->right);
-		printf("%d ", arv->value)
+		printf("%d ", arv->value);
 	}
 }
